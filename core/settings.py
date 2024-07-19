@@ -12,10 +12,8 @@ if not GOOGLE_OAUTH_CLIENT_ID:
 print(f'{GOOGLE_OAUTH_CLIENT_ID = }')
 
 
-# SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
 SECURE_REFERRER_POLICY = 'no-referrer-when-downgrade'
 SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin-allow-popups"
-
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
