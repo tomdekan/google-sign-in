@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-top: 10px;
+        }
+
+        p {
+            color: #333;
+            margin: 10px 0;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .g_id_signin {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    {% if request.session.user_data %}
+    <div>
+        <p>Hi {{ request.session.user_data.given_name }} 🙂</p>
+        <p>Your email is {{ request.session.user_data.email }}</p>
+        <img src="{{ request.session.user_data.picture }}" alt="User picture">
+        <p>Click here to <a href="/sign-out">Sign out</a></p>
+    </div>
+    {% else %}
+    <div>
+        <p>Hi there 🙂 </p>
+        <p>Click below to sign in with Google</p>
+        <div id="g_id_onload"
+             data-client_id="374321206223-mh0dm6mh2o2gl8teolou5jp0d3pr2uae.apps.googleusercontent.com"
+             data-context="signin"
+             data-ux_mode="popup"
+             data-login_uri="http://localhost:8000/auth-receiver"
+             data-auto_prompt="false">
+        </div>
+
+        <div class="g_id_signin"
+             data-type="standard"
+             data-shape="rectangular"
+             data-theme="outline"
+             data-text="signin_with"
+             data-size="large"
+             data-logo_alignment="left">
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
+

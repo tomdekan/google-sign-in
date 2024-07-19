@@ -1,0 +1,18 @@
+### Tom Django gitignore template
+/venv/
+.env
+
+.idea
+db.sqlite3
+*.pyc
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media
+*.png
+*.jpeg
+.DS_Store
